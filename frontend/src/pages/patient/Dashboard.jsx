@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../../api/axios';
+import Swal from 'sweetalert2';
 
 const PatientDashboard = () => {
     const [notifications, setNotifications] = useState([]);
@@ -53,8 +54,18 @@ const PatientDashboard = () => {
     };
 
     const handleCancelAppointment = async (appointmentId) => {
-        const confirmed = window.confirm('Cancel this appointment?');
-        if (!confirmed) return;
+        const result = await Swal.fire({
+            title: 'Cancel Appointment?',
+            text: 'Are you sure you want to cancel this appointment?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, cancel it',
+            cancelButtonText: 'No, keep it'
+        });
+
+        if (!result.isConfirmed) return;
 
         try {
             await api.post('/appointment/cancel', { appointment_id: appointmentId });
