@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+# Uploads & Generated Files
+uploads/generated_pdfs/
+uploads/medical_proofs/
+uploads/profiles/
+uploads/signatures/
