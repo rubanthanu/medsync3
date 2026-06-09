@@ -23,8 +23,11 @@ class UserValidator {
     }
 
     private static function validatePhoneFormat($phone, $fieldName) {
-        if (!preg_match('/^[0-9+ ]+$/', $phone)) {
-            throw new ValidationException("{$fieldName} must contain only numbers, + or spaces.");
+        // Remove all non-digit characters to count digits
+        $digitsOnly = preg_replace('/[^0-9]/', '', $phone);
+        
+        if (strlen($digitsOnly) !== 10) {
+            throw new ValidationException("{$fieldName} must be exactly 10 digits.");
         }
     }
 }

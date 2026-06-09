@@ -25,6 +25,14 @@ const CompleteProfile = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
+        if (formData.phone.length !== 10) {
+            setError('Phone number must be 10 digits');
+            return;
+        }
+        if (formData.emergency_contact_phone.length !== 10) {
+            setError('Emergency contact phone must be 10 digits');
+            return;
+        }
         setLoading(true);
         try {
             await api.post('/user/complete_profile', formData);
@@ -57,15 +65,17 @@ const CompleteProfile = () => {
                                 <input type="text" className="form-control" value={formData.university_id} onChange={e => setFormData({...formData, university_id: e.target.value})} required />
                             </div>
                             <div className="col-md-6 mb-3">
-                                <label className="form-label fw-semibold">Phone Number</label>
+                                <label className="form-label fw-semibold">Phone Number (10 digits)</label>
                                 <input 
                                     type="tel" 
                                     className="form-control" 
                                     value={formData.phone} 
-                                    onChange={e => setFormData({...formData, phone: e.target.value.replace(/[^0-9+ ]/g, '')})} 
-                                    placeholder="+94 77 123 4567"
+                                    onChange={e => setFormData({...formData, phone: e.target.value.replace(/[^0-9]/g, '').slice(0, 10)})} 
+                                    placeholder="7712345678"
+                                    maxLength="10"
                                     required 
                                 />
+                                {formData.phone && formData.phone.length < 10 && <small className="text-danger">Phone must be 10 digits</small>}
                             </div>
                             <div className="col-md-6 mb-3">
                                 <label className="form-label fw-semibold">Gender</label>
@@ -115,15 +125,17 @@ const CompleteProfile = () => {
                                 <input type="text" className="form-control" value={formData.emergency_contact_name} onChange={e => setFormData({...formData, emergency_contact_name: e.target.value})} required />
                             </div>
                             <div className="col-md-6 mb-3">
-                                <label className="form-label fw-semibold">Contact Phone</label>
+                                <label className="form-label fw-semibold">Contact Phone (10 digits)</label>
                                 <input 
                                     type="tel" 
                                     className="form-control" 
                                     value={formData.emergency_contact_phone} 
-                                    onChange={e => setFormData({...formData, emergency_contact_phone: e.target.value.replace(/[^0-9+ ]/g, '')})} 
-                                    placeholder="+94 77 123 4567"
+                                    onChange={e => setFormData({...formData, emergency_contact_phone: e.target.value.replace(/[^0-9]/g, '').slice(0, 10)})} 
+                                    placeholder="7712345678"
+                                    maxLength="10"
                                     required 
                                 />
+                                {formData.emergency_contact_phone && formData.emergency_contact_phone.length < 10 && <small className="text-danger">Phone must be 10 digits</small>}
                             </div>
                         </div>
 

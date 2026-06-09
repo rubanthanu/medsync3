@@ -257,14 +257,16 @@ const Profile = () => {
                             <input type="email" className="form-control rounded-pill px-3 bg-light" value={profile?.email || ''} readOnly />
                         </div>
                         <div className="col-md-6">
-                            <label className="form-label fw-semibold text-secondary small">PHONE</label>
+                            <label className="form-label fw-semibold text-secondary small">PHONE (10 digits)</label>
                             <input 
                                 type="tel" 
                                 className="form-control rounded-pill px-3" 
                                 value={profile?.phone || ''} 
-                                onChange={e => setProfile({...profile, phone: e.target.value.replace(/[^0-9+ ]/g, '')})} 
-                                placeholder="+94 77 123 4567" 
+                                onChange={e => setProfile({...profile, phone: e.target.value.replace(/[^0-9]/g, '').slice(0, 10)})} 
+                                placeholder="7712345678"
+                                maxLength="10"
                             />
+                            {profile?.phone && profile.phone.length < 10 && <small className="text-danger d-block mt-1">Phone must be 10 digits</small>}
                         </div>
                         <div className="col-md-6">
                             <label className="form-label fw-semibold text-secondary small">DATE OF BIRTH</label>
@@ -314,14 +316,17 @@ const Profile = () => {
                                 <input type="text" className="form-control rounded-pill px-3" value={profile?.emergency_contact_name || ''} onChange={e => setProfile({...profile, emergency_contact_name: e.target.value})} required />
                             </div>
                             <div className="col-md-6">
-                                <label className="form-label fw-semibold text-secondary small">EMERGENCY CONTACT PHONE</label>
+                                <label className="form-label fw-semibold text-secondary small">EMERGENCY CONTACT PHONE (10 digits)</label>
                                 <input 
                                     type="tel" 
                                     className="form-control rounded-pill px-3" 
                                     value={profile?.emergency_contact_phone || ''} 
-                                    onChange={e => setProfile({...profile, emergency_contact_phone: e.target.value.replace(/[^0-9+ ]/g, '')})} 
+                                    onChange={e => setProfile({...profile, emergency_contact_phone: e.target.value.replace(/[^0-9]/g, '').slice(0, 10)})} 
+                                    placeholder="7712345678"
+                                    maxLength="10"
                                     required 
                                 />
+                                {profile?.emergency_contact_phone && profile.emergency_contact_phone.length < 10 && <small className="text-danger d-block mt-1">Phone must be 10 digits</small>}
                             </div>
                             <div className="col-md-6">
                                 <label className="form-label fw-semibold text-secondary small">ALLERGIES</label>
