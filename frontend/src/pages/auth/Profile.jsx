@@ -43,10 +43,10 @@ const Profile = () => {
                 }
 
                 if (res.data.profile_image) {
-                    setProfileImagePreview(`http://localhost/medsync2/uwu-medsync-api/${res.data.profile_image}`);
+                    setProfileImagePreview(`http://localhost/medsync3/uwu-medsync-api/${res.data.profile_image}`);
                 }
                 if (res.data.digital_signature) {
-                    setSigPreview(`http://localhost/medsync2/uwu-medsync-api/${res.data.digital_signature}`);
+                    setSigPreview(`http://localhost/medsync3/uwu-medsync-api/${res.data.digital_signature}`);
                 }
             } catch (err) {
                 console.error(err);
