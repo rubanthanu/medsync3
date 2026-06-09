@@ -65,7 +65,7 @@ const Landing = () => {
                     </div>
                 </div>
                 <div className="col-lg-6 mt-5 mt-lg-0 text-center position-relative">
-                    <div className="position-absolute top-50 start-50 translate-middle bg-primary rounded-circle filter-blur opacity-10" style={{ width: '400px', height: '400px', zIndex: -1 }}></div>
+                    
                     <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Medical Center" className="img-fluid rounded-4 shadow-lg border border-light" style={{ maxHeight: '420px', width: '100%', objectFit: 'cover' }} />
                 </div>
             </div>

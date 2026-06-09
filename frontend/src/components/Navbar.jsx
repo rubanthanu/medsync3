@@ -88,7 +88,7 @@ const Navbar = () => {
                                 <a className="nav-link dropdown-toggle fw-semibold d-flex align-items-center gap-2" href="#" role="button" data-bs-toggle="dropdown">
                                     {user.profile_image ? (
                                         <img 
-                                            src={`http://localhost/medsync2/uwu-medsync-api/${user.profile_image}?t=${Date.now()}`} 
+                                            src={`http://localhost/medsync3/uwu-medsync-api/${user.profile_image}?t=${Date.now()}`} 
                                             alt={user.full_name} 
                                             className="rounded-circle object-fit-cover shadow-sm"
                                             style={{ width: '35px', height: '35px', border: '1px solid #dee2e6' }}
